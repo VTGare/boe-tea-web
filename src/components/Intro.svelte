@@ -6,14 +6,14 @@
 
   let guilds = 0;
   let channels = 0;
-  let postCount = 0;
+  let imagesCount = 0;
 
   onMount(() => {
     const ws = new WebSocket("wss://boe-tea-go.herokuapp.com/ws/stats");
     stats.subscribe((s) => {
       guilds = s.guilds;
       channels = s.channels;
-      postCount = s.postCount;
+      imagesCount = s.postCount;
     });
 
     ws.onmessage = (event) => {
@@ -72,7 +72,7 @@
     <div class="flexcontainer fields">
       <Field name="Servers" value={guilds} />
       <Field name="Channels" value={channels} />
-      <Field name="Images posted*" value={postCount} tooltip="In last 24 hours on servers with enabled repost detection" />
+      <Field name="Images posted*" value={imagesCount} tooltip="In last 24 hours on servers with enabled repost detection" />
     </div>
     <div class="flexcontainer buttons">
       <Button
