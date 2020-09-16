@@ -1,7 +1,5 @@
 <script>
 	import Nav from '../components/Nav.svelte';
-
-	export let segment: string;
 </script>
 
 <style>
@@ -18,7 +16,7 @@
 	}
 </style>
 
-<Nav {segment}/>
+<Nav />
 
 <main>
 	<slot></slot>

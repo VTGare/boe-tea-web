@@ -63,7 +63,7 @@
 </style>
 
 <section>
-  <video autoplay loop>
+  <video autoplay loop muted>
     <source src="araragi.webm" type="video/webm">
     <track kind="captions">
   </video>
