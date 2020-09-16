@@ -14,10 +14,12 @@
 		font-size: 2.8em;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
+		color: rgb(187, 100, 141);
 	}
 
 	p {
 		margin: 1em auto;
+		color: white;
 	}
 
 	@media (min-width: 480px) {
