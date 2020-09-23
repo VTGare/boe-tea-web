@@ -20,30 +20,56 @@
   }
 
   .tooltip {
-    position: absolute;
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
     visibility: hidden;
-
-    background-color: #bb648d;
-    color: white;
-    width: 33%;
-
-    bottom: 190px;
-    padding: 3px;
-    border-radius: 5px;
+    background-color: rgba(255, 255,255, 0.8);
+    color: black;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
   }
 
-  .tooltip {
-    width: 120px;
+  .tooltip .tooltiptext {
+    width: 20vw;
+    bottom: 100%;    
+    left: 50%;
+    margin-left: -11vw;
   }
 
-  div:hover .tooltip {
+  .tooltip:hover .tooltiptext {
     visibility: visible;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.8) transparent transparent transparent;
+  }
+
+  .tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 2s;
+  }
+  .tooltip:hover .tooltiptext {
+    opacity: 1;
   }
 </style>
 
 {#if tooltip != ''}
-  <div>
-    <span class="tooltip">{tooltip}</span>
+  <div class="tooltip">
+    <span class="tooltiptext">{tooltip}</span>
+    <div class="arrow-down" />
     <p class="name">{name}</p>
     <p><span class="value">{value}</span></p>
   </div>

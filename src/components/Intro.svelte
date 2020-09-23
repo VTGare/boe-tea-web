@@ -1,31 +1,10 @@
 <script>
-  import { onMount, onDestroy } from "svelte";
-  import { stats, BotStats } from "../stores";
   import Field from "./Field.svelte";
   import Button from "./Button.svelte";
 
   let guilds = 0;
   let channels = 0;
   let imagesCount = 0;
-
-  onMount(() => {
-    const ws = new WebSocket("wss://boe-tea-go.herokuapp.com/ws/stats");
-    stats.subscribe((s) => {
-      guilds = s.guilds;
-      channels = s.channels;
-      imagesCount = s.postCount;
-    });
-
-    ws.onmessage = (event) => {
-      console.log("Websocket message received:", event);
-      const data = JSON.parse(event.data);
-      stats.set(new BotStats(data.guilds as number, data.channels as number, data.post_count as number));
-    };
-
-    ws.onerror = (event) => {
-      console.error("WebSocket error:", event);
-    };
-  });
 </script>
 
 <style>
